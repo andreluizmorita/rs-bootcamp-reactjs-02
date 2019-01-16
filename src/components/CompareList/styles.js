@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Container = styled.div`
   display: flex;
@@ -11,6 +11,7 @@ export const Repository = styled.div`
   width: 250px;
   background: #fff;
   border-radius: 3px;
+  margin-right: 15px;
 
   display: flex;
   flex-direction: column;
