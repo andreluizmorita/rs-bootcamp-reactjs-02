@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import api from "../../services/api";
+import moment from "moment";
 
 import logo from "../../assets/logo.png";
 import PropTypes from "prop-types";
@@ -32,11 +33,15 @@ class Main extends Component {
     event.preventDefault();
 
     try {
-      const response = await api.get(`/repos/${this.state.repositoryInput}`);
+      const { data: repository } = await api.get(
+        `/repos/${this.state.repositoryInput}`
+      );
+
+      repository.last_commit = moment(repository.pushed_at).fromNow();
 
       this.setState({
         repositoryInput: "",
-        repositories: [...this.state.repositories, response.data]
+        repositories: [...this.state.repositories, repository]
       });
     } catch (err) {
       console.log(err);
@@ -76,7 +81,8 @@ CompareList.propTypes = {
       stargazers_count: PropTypes.number,
       forks_count: PropTypes.number,
       open_issues_count: PropTypes.number,
-      pushed_at: PropTypes.number
+      pushed_at: PropTypes.string,
+      last_commit: PropTypes.string
     })
   ).isRequired
 };
