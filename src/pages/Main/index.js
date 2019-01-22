@@ -52,7 +52,7 @@ class Main extends Component {
           />
           <button type="submit">OK</button>
         </Form>
-        <CompareList repositories={this.props.favorites} />
+        <CompareList repositories={this.props.favorites.data} />
       </Container>
     );
   }
@@ -60,13 +60,16 @@ class Main extends Component {
 
 Main.propTypes = {
   addFavoriteRequest: PropTypes.func.isRequired,
-  favorites: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number,
-      name: PropTypes.string,
-      description: PropTypes.string
-    })
-  ).isRequired
+  favorites: PropTypes.shape({
+    loading: PropTypes.bool,
+    data: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.number,
+        name: PropTypes.string,
+        description: PropTypes.string
+      })
+    )
+  }).isRequired
 };
 
 const mapsStateToProps = state => ({
