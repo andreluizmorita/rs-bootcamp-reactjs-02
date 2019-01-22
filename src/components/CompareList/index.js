@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-import { Container, Repository } from "./styles";
+import { Container, Repository } from './styles';
 
 const CompareList = ({ repositories }) => (
   <Container>

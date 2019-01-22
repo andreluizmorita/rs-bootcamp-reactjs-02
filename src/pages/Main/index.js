@@ -13,23 +13,12 @@ import { Container, Form } from './styles';
 import CompareList from '../../components/CompareList';
 
 class Main extends Component {
-  static propTypes = {
-    addFavorite: PropTypes.func.isRequired,
-    favorites: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.number,
-        name: PropTypes.string,
-        description: PropTypes.string
-      })
-    ).isRequired
-  };
-
   state = {
     repositoryInput: '',
     repositories: []
   };
 
-  handleAddRepository = async event => {
+  handleAddRepository = event => {
     event.preventDefault();
 
     // try {
@@ -47,7 +36,7 @@ class Main extends Component {
     //   console.log(err);
     // }
 
-    this.props.addFavoriteSuccess();
+    this.props.addFavoriteRequest(this.state.repositoryInput);
   };
 
   render() {
@@ -63,26 +52,19 @@ class Main extends Component {
           />
           <button type="submit">OK</button>
         </Form>
-        <CompareList repositories={this.state.repositories} />
+        <CompareList repositories={this.props.favorites} />
       </Container>
     );
   }
 }
 
-CompareList.propTypes = {
-  repositories: PropTypes.arrayOf(
+Main.propTypes = {
+  addFavoriteRequest: PropTypes.func.isRequired,
+  favorites: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number,
       name: PropTypes.string,
-      owner: PropTypes.shape({
-        login: PropTypes.string,
-        avatar_url: PropTypes.string
-      }),
-      stargazers_count: PropTypes.number,
-      forks_count: PropTypes.number,
-      open_issues_count: PropTypes.number,
-      pushed_at: PropTypes.string,
-      last_commit: PropTypes.string
+      description: PropTypes.string
     })
   ).isRequired
 };
