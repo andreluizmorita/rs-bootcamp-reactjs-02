@@ -1,16 +1,16 @@
-import React, { Component } from "react";
-import api from "../../services/api";
-import moment from "moment";
+import React, { Component } from 'react';
+// import api from '../../services/api';
+// import moment from 'moment';
 
-import logo from "../../assets/logo.png";
-import PropTypes from "prop-types";
+import logo from '../../assets/logo.png';
+import PropTypes from 'prop-types';
 
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-import * as FavoriteActions from "../../store/actions/favorites";
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as FavoriteActions from '../../store/actions/favorites';
 
-import { Container, Form } from "./styles";
-import CompareList from "../../components/CompareList";
+import { Container, Form } from './styles';
+import CompareList from '../../components/CompareList';
 
 class Main extends Component {
   static propTypes = {
@@ -25,29 +25,29 @@ class Main extends Component {
   };
 
   state = {
-    repositoryInput: "",
+    repositoryInput: '',
     repositories: []
   };
 
   handleAddRepository = async event => {
     event.preventDefault();
 
-    try {
-      const { data: repository } = await api.get(
-        `/repos/${this.state.repositoryInput}`
-      );
+    // try {
+    //   const { data: repository } = await api.get(
+    //     `/repos/${this.state.repositoryInput}`
+    //   );
 
-      repository.last_commit = moment(repository.pushed_at).fromNow();
+    //   repository.last_commit = moment(repository.pushed_at).fromNow();
 
-      this.setState({
-        repositoryInput: "",
-        repositories: [...this.state.repositories, repository]
-      });
-    } catch (err) {
-      console.log(err);
-    }
+    //   this.setState({
+    //     repositoryInput: "",
+    //     repositories: [...this.state.repositories, repository]
+    //   });
+    // } catch (err) {
+    //   console.log(err);
+    // }
 
-    //this.props.addFavorite();
+    this.props.addFavoriteSuccess();
   };
 
   render() {
