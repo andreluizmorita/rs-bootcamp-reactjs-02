@@ -21,6 +21,7 @@ class Main extends Component {
   handleAddRepository = event => {
     event.preventDefault();
 
+    // -- Modelo sem Redux Saga
     // try {
     //   const { data: repository } = await api.get(
     //     `/repos/${this.state.repositoryInput}`
@@ -37,6 +38,9 @@ class Main extends Component {
     // }
 
     this.props.addFavoriteRequest(this.state.repositoryInput);
+    this.setState({
+      repositoryInput: ''
+    });
   };
 
   render() {
@@ -44,14 +48,18 @@ class Main extends Component {
       <Container>
         <img src={logo} alt="Github Compare" />
         <Form onSubmit={this.handleAddRepository}>
-          <input
-            type="text"
-            placeholder="Usuário/Repositório"
-            value={this.state.repositoryInput}
-            onChange={e => this.setState({ repositoryInput: e.target.value })}
-          />
-          <button type="submit">OK</button>
+          <div>
+            <input
+              type="text"
+              placeholder="Usuário/Repositório"
+              value={this.state.repositoryInput}
+              onChange={e => this.setState({ repositoryInput: e.target.value })}
+            />
+            <button type="submit">OK</button>
+          </div>
+          {this.props.favorites.loading && <p>Carregando...</p>}
         </Form>
+
         <CompareList repositories={this.props.favorites.data} />
       </Container>
     );
