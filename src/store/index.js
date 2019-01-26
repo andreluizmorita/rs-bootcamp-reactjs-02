@@ -1,7 +1,7 @@
 import { createStore, compose, applyMiddleware } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 
-import reducers from './reducers';
+import reducers from './ducks';
 import sagas from './sagas';
 
 const middlewares = [];
@@ -12,7 +12,7 @@ const middlewares = [];
 //     ? console.tron.createSagaMonitor()
 //     : null;
 
-// const sagaMiddleware = createSagaMiddleware({ sagaMonitor });
+//const sagaMiddleware = createSagaMiddleware({ sagaMonitor });
 const sagaMiddleware = createSagaMiddleware();
 
 middlewares.push(sagaMiddleware);
