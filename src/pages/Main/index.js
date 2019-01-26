@@ -74,9 +74,11 @@ Main.propTypes = {
       PropTypes.shape({
         id: PropTypes.number,
         name: PropTypes.string,
-        description: PropTypes.string
+        description: PropTypes.string,
+        url: PropTypes.string
       })
-    )
+    ),
+    error: PropTypes.oneOfType([null, PropTypes.string])
   }).isRequired
 };
 
