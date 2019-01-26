@@ -13,7 +13,7 @@ export function* addFavorite(action) {
     );
 
     if (isDuplicate) {
-      FavoriteActions.addFavoriteFailure('Repositório duplicado!');
+      yield put(FavoriteActions.addFavoriteFailure('Repositório duplicado!'));
     } else {
       const respositoryData = data;
       respositoryData.last_commit = moment(data).fromNow();

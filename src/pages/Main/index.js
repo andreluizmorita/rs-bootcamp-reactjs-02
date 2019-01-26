@@ -38,9 +38,7 @@ class Main extends Component {
     // }
 
     this.props.addFavoriteRequest(this.state.repositoryInput);
-    this.setState({
-      repositoryInput: ''
-    });
+    this.setState({ repositoryInput: '' });
   };
 
   render() {
@@ -77,8 +75,7 @@ Main.propTypes = {
         description: PropTypes.string,
         url: PropTypes.string
       })
-    ),
-    error: PropTypes.oneOfType([null, PropTypes.string])
+    )
   }).isRequired
 };
 
