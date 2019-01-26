@@ -12,6 +12,7 @@ export const Types = {
  */
 const INITIAL_STATE = {
   loading: false,
+  error: null,
   data: []
 };
 
@@ -23,7 +24,14 @@ export default function favorites(state = INITIAL_STATE, action) {
       return {
         ...state,
         loading: false,
+        error: null,
         data: [...state.data, action.payload.data]
+      };
+    case Types.ADD_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload.error
       };
     default:
       return state;
@@ -46,8 +54,8 @@ export const Creators = {
     payload: { data }
   }),
 
-  addFavoriteFailure: data => ({
+  addFavoriteFailure: error => ({
     type: Types.ADD_FAILURE,
-    payload: { data }
+    payload: { error }
   })
 };

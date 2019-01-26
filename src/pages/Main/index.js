@@ -58,8 +58,8 @@ class Main extends Component {
             <button type="submit">OK</button>
           </div>
           {this.props.favorites.loading && <p>Carregando...</p>}
+          {!!this.props.favorites.error && <p>{this.props.favorites.error}</p>}
         </Form>
-
         <CompareList repositories={this.props.favorites.data} />
       </Container>
     );

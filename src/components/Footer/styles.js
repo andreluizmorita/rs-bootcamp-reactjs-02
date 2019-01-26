@@ -5,4 +5,5 @@ export const Container = styled.div`
   color: #fff;
   text-transform: uppercase;
   font-size: 12px;
+  margin-top: 15px;
 `;

@@ -1,9 +1,9 @@
-import React, { Fragment } from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import React, { Fragment } from 'react';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
-import Footer from "../components/Footer";
+import Footer from '../components/Footer';
 
-import Main from "../pages/main";
+import Main from '../pages/main';
 
 const Routes = () => (
   <BrowserRouter>
